@@ -6,11 +6,11 @@ pipeline {
     tools{
         maven 'maven'
     }
-    stages{
+    stages{  
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ygminds73/devops-cicd.git']]])
-                sh 'mvn clean install'
+                sh 'mvn clean install'         //till install goals executed.. validate,compile,test,package,verify and install
             }
         }
         stage('Build docker image'){
