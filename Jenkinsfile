@@ -31,6 +31,13 @@ pipeline {
                 }
             }
         }
+        stage('EKS & kubectl configuration'){
+            steps{
+                script{
+                    sh "aws eks update-kubeconfig --region ap-south-1 --name ankit_cluster"
+                }
+            }
+        }
         stage('Deploy to k8s'){
             steps{
                 script{
